@@ -24,8 +24,8 @@ export const IndicatorsChart: React.FC<ChartProps> = ({ data }) => {
     { name: 'Óbitos', value: data.indicadores.obitos, fill: '#000000' },
   ];
   return (
-    <div className="w-full h-[300px]">
-      <ResponsiveContainer width="100%" height="100%">
+    <div style={{ width: '100%', height: 300 }} className="w-full h-[300px]">
+      <ResponsiveContainer width="100%" height="100%" minWidth={0}>
         <BarChart layout="vertical" data={chartData} margin={{ top: 5, right: 40, left: 40, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" horizontal={false} />
           <XAxis type="number" hide />
@@ -50,8 +50,8 @@ export const EpidemicCurveChart: React.FC<ChartProps> = ({ data }) => {
   const peakWeek = `SE ${data.casosPorSemana.semanas[peakIndex]}`;
 
   return (
-    <div className="w-full h-[350px]">
-      <ResponsiveContainer width="100%" height="100%">
+    <div style={{ width: '100%', height: 350 }} className="w-full h-[350px]">
+      <ResponsiveContainer width="100%" height="100%" minWidth={0}>
         <ComposedChart data={chartData} margin={{ top: 25, right: 30, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis dataKey="semana" style={{ fontSize: '9px' }} interval={3} angle={-45} textAnchor="end" height={50} />
@@ -74,8 +74,8 @@ export const EpidemicCurveChart: React.FC<ChartProps> = ({ data }) => {
 export const MonthlyChart: React.FC<ChartProps> = ({ data }) => {
   const chartData = data.casosPorMes.meses.map((m, i) => ({ mes: m, casos: data.casosPorMes.casos[i] }));
   return (
-    <div className="w-full h-[250px]">
-      <ResponsiveContainer width="100%" height="100%">
+    <div style={{ width: '100%', height: 250 }} className="w-full h-[250px]">
+      <ResponsiveContainer width="100%" height="100%" minWidth={0}>
         <BarChart data={chartData} margin={{ top: 20, right: 0, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis dataKey="mes" style={{ fontSize: '11px' }} />
@@ -97,8 +97,8 @@ export const SexDistributionChart: React.FC<ChartProps> = ({ data }) => {
   const chartData = [{ name: 'Feminino', value: fem }, { name: 'Masculino', value: masc }];
   const PIE_COLORS = [COLORS.feminino, COLORS.masculino];
   return (
-    <div className="w-full h-[250px]">
-      <ResponsiveContainer width="100%" height="100%">
+    <div style={{ width: '100%', height: 250 }} className="w-full h-[250px]">
+      <ResponsiveContainer width="100%" height="100%" minWidth={0}>
         <PieChart>
           <Pie data={chartData} cx="50%" cy="50%" innerRadius={40} outerRadius={80} fill="#8884d8" paddingAngle={5} dataKey="value" label={({name, value, percent}) => `${name}: ${value} (${(percent * 100).toFixed(0)}%)`} style={{ fontSize: '10px', fontWeight: 'bold' }}>
             {chartData.map((entry, index) => (<Cell key={`cell-${index}`} fill={PIE_COLORS[index % PIE_COLORS.length]} />))}
@@ -117,13 +117,13 @@ export const PyramidChart: React.FC<ChartProps> = ({ data }) => {
     maleAbs: data.piramideEtaria.masculino[i], femaleAbs: data.piramideEtaria.feminino[i]
   }));
   return (
-    <div className="w-full h-[350px]">
-      <ResponsiveContainer width="100%" height="100%">
+    <div style={{ width: '100%', height: 350 }} className="w-full h-[350px]">
+      <ResponsiveContainer width="100%" height="100%" minWidth={0}>
         <BarChart layout="vertical" data={chartData} stackOffset="sign" margin={{left: 10, right: 10, top: 20}}>
           <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
           <XAxis type="number" tickFormatter={(val) => Math.abs(val).toString()} hide />
           <YAxis dataKey="faixa" type="category" width={70} style={{ fontSize: '9px', fontWeight: 'bold' }} interval={0} />
-          <Tooltip formatter={(value: number) => Math.abs(value)} />
+          <Tooltip formatter={(value: number) => Math.abs(value).toString()} />
           <Legend verticalAlign="top" wrapperStyle={legendStyle}/>
           <Bar dataKey="male" name="Masculino" fill={COLORS.masculino} stackId="a">
             <LabelList dataKey="maleAbs" position="left" style={{...labelStyle, fill: COLORS.masculino}} />
@@ -140,8 +140,8 @@ export const PyramidChart: React.FC<ChartProps> = ({ data }) => {
 export const LiraaChart: React.FC<ChartProps> = ({ data }) => {
   const chartData = data.liraa.ciclos.map((c, i) => ({ ciclo: c, iip: data.liraa.iip[i] }));
   return (
-    <div className="w-full h-[250px]">
-      <ResponsiveContainer width="100%" height="100%">
+    <div style={{ width: '100%', height: 250 }} className="w-full h-[250px]">
+      <ResponsiveContainer width="100%" height="100%" minWidth={0}>
         <LineChart data={chartData} margin={{ top: 20, right: 30, left: 10, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis dataKey="ciclo" style={{ fontSize: '10px' }} />
@@ -149,7 +149,7 @@ export const LiraaChart: React.FC<ChartProps> = ({ data }) => {
           <Tooltip />
           <Legend verticalAlign="top" wrapperStyle={legendStyle} />
           <Line type="monotone" dataKey="iip" name="IIP (%)" stroke={COLORS.principal} strokeWidth={3}>
-            <LabelList dataKey="iip" position="top" style={labelStyle} formatter={(v:any) => `${v}%`} />
+            <LabelList dataKey="iip" position="top" style={labelStyle} formatter={(value: number) => `${value}%`} />
           </Line>
         </LineChart>
       </ResponsiveContainer>
@@ -160,8 +160,8 @@ export const LiraaChart: React.FC<ChartProps> = ({ data }) => {
 export const InfoDengueChart: React.FC<ChartProps> = ({ data }) => {
   const chartData = data.infoDengue.semanas.map((s, i) => ({ semana: `SE ${s}`, reais: data.infoDengue.casosReais[i], alerta: data.infoDengue.alertas[i] || 0 }));
   return (
-    <div className="w-full h-[300px]">
-      <ResponsiveContainer width="100%" height="100%">
+    <div style={{ width: '100%', height: 300 }} className="w-full h-[300px]">
+      <ResponsiveContainer width="100%" height="100%" minWidth={0}>
         <ComposedChart data={chartData} margin={{ top: 20, right: 0, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis dataKey="semana" style={{ fontSize: '10px' }} interval={4} />
@@ -169,7 +169,7 @@ export const InfoDengueChart: React.FC<ChartProps> = ({ data }) => {
           <Tooltip />
           <Legend verticalAlign="top" wrapperStyle={legendStyle} />
           <Bar dataKey="reais" name="Casos Reais" fill={COLORS.principal}>
-            <LabelList dataKey="reais" position="top" style={{...labelStyle, fontSize: 8}} />
+            <LabelList dataKey="reais" position="top" style={{ fill: '#000', fontSize: 8, fontWeight: 'bold' }} />
           </Bar>
           <Line type="monotone" dataKey="alerta" name="Projeção InfoDengue" stroke={COLORS.alerta} strokeWidth={3} dot={false} />
         </ComposedChart>
@@ -182,8 +182,8 @@ export const CostDistributionChart: React.FC<ChartProps> = ({ data }) => {
   const chartData = data.impactoEconomico.categorias.map((cat, i) => ({ name: cat, value: data.impactoEconomico.valores[i], percent: data.impactoEconomico.percentuais[i] }));
   const PIE_COLORS = [COLORS.principal, COLORS.secundaria, COLORS.alerta];
   return (
-    <div className="w-full h-[250px]">
-      <ResponsiveContainer width="100%" height="100%">
+    <div style={{ width: '100%', height: 250 }} className="w-full h-[250px]">
+      <ResponsiveContainer width="100%" height="100%" minWidth={0}>
         <PieChart>
           <Pie data={chartData} cx="50%" cy="50%" outerRadius={80} dataKey="value" label={({percent}) => `${(percent * 100).toFixed(1)}%`} style={{ fontSize: '10px', fontWeight: 'bold' }}>
              {chartData.map((entry, index) => (<Cell key={`cell-${index}`} fill={PIE_COLORS[index % PIE_COLORS.length]} />))}
@@ -202,8 +202,8 @@ interface MacroComparisonProps {
 
 export const MacroComparisonChart: React.FC<MacroComparisonProps> = ({ data }) => {
   return (
-    <div className="w-full h-[300px]">
-      <ResponsiveContainer width="100%" height="100%">
+    <div style={{ width: '100%', height: 300 }} className="w-full h-[300px]">
+      <ResponsiveContainer width="100%" height="100%" minWidth={0}>
         <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis dataKey="ano" style={{ fontSize: '10px' }} />
