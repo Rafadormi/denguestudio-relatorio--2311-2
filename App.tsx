@@ -1,9 +1,11 @@
+
 import React from 'react';
 import { Printer } from 'lucide-react';
 import ReportCover from './components/ReportCover';
 import YearReport from './components/YearReport';
 import ConsolidatedConclusions from './components/ConsolidatedConclusions';
 import Planning2026 from './components/Planning2026';
+import Module1BrazilParana from './components/Module1BrazilParana';
 import { TableOfContents, ExecutiveSummary, Glossary, Objectives, History, Legislation, References } from './components/ReportSections';
 import { DADOS } from './data';
 
@@ -56,7 +58,10 @@ const App: React.FC = () => {
           <History />
         </div>
 
-        {/* Module 1 placeholder or implementation if data available */}
+        {/* Module 1: Brazil/Parana Context */}
+        <div className="mt-8 print:mt-0 print:break-before-page">
+          <Module1BrazilParana />
+        </div>
         
         {/* Module 2: Year Reports */}
         {years.map((year) => (

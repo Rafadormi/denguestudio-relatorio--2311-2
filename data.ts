@@ -1,4 +1,5 @@
 
+
 import { DadosCollection, YearMeta } from './types';
 
 export const METADATA: Record<string, YearMeta> = {
@@ -53,7 +54,7 @@ export const ANALYSIS_TEXT: Record<string, Record<string, string>> = {
   },
   "2022": {
     magnitude: `O ano de 2022 representou o <strong>retorno da transmissão epidêmica</strong>, com <span class="font-bold text-principal">1.153 notificações</span> e <span class="font-bold text-principal">297 casos confirmados</span>, resultando em uma taxa de incidência de <span class="bg-principal text-white px-1.5 py-0.5 rounded text-sm font-bold mx-1 shadow-sm">4.164,3 casos por 100.000 habitantes</span>. Esta magnitude classifica o ano como de alta transmissão, porém com impacto significativamente inferior às epidemias de 2020 e futura de 2024. A baixa taxa de confirmação de <span class="font-bold text-principal">25,8%</span> sugere alta sensibilidade da vigilância ou co-circulação de outros arbovírus.`,
-    temporal: `A dinâmica temporal da epidemia de 2022 caracterizou-se por um padrão de <strong>crescimento gradual seguido de pico tardio</strong>. A transmissão iniciou-se de forma consistente a partir da <span class="font-bold text-principal">SE 10 (março)</span>, com crescimento progressivo até atingir o pico nas <span class="font-bold text-principal">SE 17-18 (final de abril/início de maio)</span>, quando foram registrados <span class="bg-principal text-white px-1.5 py-0.5 rounded text-sm font-bold mx-1 shadow-sm">56 casos confirmados</span> em uma única semana. Este pico mais tardio sugere início mais lento da transmissão ou condições climáticas específicas.`,
+    temporal: `A dinâmica temporal da epidemia de 2022 caracterizou-se por um padrão de <strong>crescimento gradual seguido de pico tardio</strong>. A transmissão iniciou-se de forma consistente a partir da <span class="font-bold text-principal">SE 10 (março)</span>, com crescimento progressivo até atingir o pico nas <span class="font-bold text-principal">SE 17-18 (final de abril/início de maio)</span>, com <span class="bg-principal text-white px-1.5 py-0.5 rounded text-sm font-bold mx-1 shadow-sm">56 casos confirmados</span> em uma única semana. Este pico mais tardio sugere início mais lento da transmissão ou condições climáticas específicas.`,
     demografica: `A distribuição demográfica em 2022 apresentou equilíbrio entre os sexos (<span class="font-bold text-principal">54% feminino</span> vs <span class="font-bold text-principal">46% masculino</span>) e ampla distribuição etária, com concentração significativa na população economicamente ativa (20-59 anos), indicando transmissão comunitária generalizada.`,
     entomologica: `Os resultados do LIRAa de 2022 revelaram um cenário de risco elevado no início do ano, com IIP de <span class="font-bold text-principal">5,1%</span> em abril configurando alto risco e precedendo o pico de casos humanos, demonstrando a importância do monitoramento entomológico como ferramenta preditiva.`,
     infodengue: `O sistema InfoDengue superestimou significativamente a magnitude da epidemia em 2022, projetando picos de 150 a 221 casos por semana versus 297 casos confirmados no total. Esta discrepância sugere que as ações locais de controle podem ter mitigado o cenário previsto, embora o timing do pico tenha sido corretamente identificado.`,
@@ -131,6 +132,18 @@ export const CONSOLIDATED_ANALYSIS = {
     ],
     licoes: `A principal lição do sexênio é que <span class="font-bold text-principal">o custo da prevenção é uma fração do custo da epidemia</span>. Estima-se que cada R$ 1,00 investido em prevenção em 2025 economizou cerca de R$ 11,00 em custos de tratamento e perda de produtividade comparado a 2024. Além disso, ficou evidente que a resposta reativa (iniciada após o aumento de casos) é ineficaz para conter epidemias explosivas; o sucesso depende exclusivamente da ação proativa baseada em indicadores entomológicos de alerta.`
   }
+};
+
+export const CONTEXTO_MACRO = {
+  brasil: `O cenário epidemiológico da dengue no Brasil entre 2020 e 2025 foi marcado por uma tendência de crescimento exponencial, culminando na maior epidemia da história em 2024. O país registrou recordes sucessivos de casos prováveis, impulsionados pela circulação simultânea de múltiplos sorotipos (DENV-1, 2, 3 e 4), mudanças climáticas (El Niño) e urbanização desordenada. Em 2024, o Brasil ultrapassou a marca de 6 milhões de casos prováveis, com uma taxa de incidência nacional superior a 3.000 casos/100.000 hab. O ressurgimento do sorotipo 3 e a expansão da área de transmissão para regiões anteriormente indenes (como o Sul) foram destaques negativos.`,
+  parana: `O Paraná consolidou-se como um dos estados mais críticos da federação durante o período. A "tropicalização" do clima no estado, aliada a invernos mais amenos, permitiu a manutenção do vetor durante todo o ano. Em 2020 e 2024, o estado declarou situação de emergência em saúde pública. A 12ª Regional de Saúde (Umuarama), onde Perobal está inserido, figurou consistentemente entre as regiões com maiores coeficientes de incidência, evidenciando uma vulnerabilidade regional estrutural. A epidemia de 2024 no Paraná foi caracterizada por um início precoce (janeiro) e uma severidade clínica aumentada.`,
+  comparativoData: [
+    { ano: "2020", perobal: 13698, parana: 2200, brasil: 470 },
+    { ano: "2021", perobal: 140, parana: 250, brasil: 255 },
+    { ano: "2022", perobal: 4164, parana: 1800, brasil: 690 },
+    { ano: "2023", perobal: 2187, parana: 1200, brasil: 770 },
+    { ano: "2024", perobal: 21214, parana: 5300, brasil: 3000 }
+  ]
 };
 
 export const PLANNING_2026 = {
@@ -267,14 +280,36 @@ export const EXTRA_SECTIONS = {
     }
   },
   legislation: {
-    title: "MÓDULO 7: PROPOSTA DE LEGISLAÇÃO MUNICIPAL",
+    title: "MÓDULO 7: PROPOSTA DE LEGISLAÇÃO E NORMATIVAS",
     articles: [
-      { title: "PROJETO DE LEI Nº XXX/2025", text: "Institui o Programa Municipal de Vigilância, Prevenção e Controle da Dengue e outras Arboviroses e dá outras providências." },
-      { title: "CAPÍTULO I - DISPOSIÇÕES GERAIS", text: "Art. 1º Fica instituído o Programa Municipal de Vigilância, Prevenção e Controle da Dengue e outras Arboviroses no Município de Perobal, Estado do Paraná, com os objetivos de: I - Reduzir a incidência de casos de dengue, zika, chikungunya e outras arboviroses; II - Prevenir óbitos decorrentes de arboviroses; III - Controlar a densidade populacional do mosquito Aedes aegypti; IV - Promover a participação da comunidade nas ações de prevenção e controle." },
-      { title: "CAPÍTULO II - DAS OBRIGAÇÕES DOS MUNÍCIPES", text: "Art. 3º São obrigações dos proprietários, possuidores e responsáveis por imóveis residenciais, comerciais e industriais: I - Manter os imóveis livres de criadouros do mosquito Aedes aegypti; II - Permitir o acesso dos agentes de saúde devidamente identificados para inspeção e orientação; III - Adotar medidas corretivas indicadas pelos agentes em prazo de 24 horas. Art 4º É vedado o acúmulo de água em recipientes a céu aberto." },
-      { title: "CAPÍTULO III - DAS COMPETÊNCIAS DO PODER PÚBLICO", text: "Art. 5º Compete à Secretaria Municipal de Saúde: I - Realizar visitas de inspeção periódica; II - Executar ações de bloqueio químico quando necessário; III - Promover campanhas educativas. Art 6º O município poderá adentrar imóveis fechados ou abandonados em situações de risco iminente à saúde pública, mediante autorização judicial ou conforme legislação específica." },
-      { title: "CAPÍTULO IV - DAS PENALIDADES", text: "Art. 7º O descumprimento das obrigações previstas nesta Lei sujeitará o infrator às seguintes penalidades: I - Advertência por escrito, com prazo de 24 horas para correção; II - Multa de 50 UFM (Unidade Fiscal do Município), em caso de reincidência; III - Multa de 100 UFM, em caso de segunda reincidência; IV - Interdição do imóvel, em casos graves que representem risco à saúde pública." },
-      { title: "CAPÍTULO V - DISPOSIÇÕES FINAIS", text: "Art. 8º Os recursos arrecadados com as multas serão destinados ao Fundo Municipal de Saúde para ações de combate a endemias. Art. 9º Esta Lei entra em vigor na data de sua publicação." }
+      {
+        title: "PROJETO DE LEI COMPLEMENTAR Nº [●]/2025",
+        text: "EMENTA: Institui a Política Municipal de Prevenção e Controle Permanente da Dengue, Outras Arboviroses, Febre Amarela Urbana e Leishmaniose no Município de Perobal/PR. JUSTIFICATIVA: A incidência cíclica de arboviroses exige abordagem contínua. Esta Lei institucionaliza a vigilância ambiental, cria fundo específico e define responsabilidades claras."
+      },
+      {
+        title: "CAPÍTULO I – DISPOSIÇÕES GERAIS E PRINCÍPIOS",
+        text: "Institui a Política Municipal baseada nas Leis Federais 8.080/90 e 6.437/77. Define princípios de continuidade, intersetorialidade e prevenção baseada em evidências."
+      },
+      {
+        title: "CAPÍTULO III – DEVERES E ENTRADA FORÇADA (LEI 13.301/2016)",
+        text: "Art. 8º e 9º: É dever do cidadão manter imóveis livres de criadouros. §1º Autoriza o INGRESSO FORÇADO em imóveis em situação de abandono, ausência ou recusa, conforme Lei Federal nº 13.301/2016, mediante relatório circunstanciado e, se necessário, apoio policial."
+      },
+      {
+        title: "CAPÍTULO IV – VIGILÂNCIA AMBIENTAL INTEGRADA",
+        text: "A Secretaria de Saúde coordenará sistema integrado de vigilância (epidemiológica, entomológica e ambiental), realizando LIRAa periódico e monitoramento de outras zoonoses."
+      },
+      {
+        title: "CAPÍTULO VI – FUNDO MUNICIPAL DE COMBATE ÀS ARBOVIROSES",
+        text: "Criação de Fundo específico com receitas de multas sanitárias e repasses vinculados, exclusivo para vigilância e controle."
+      },
+      {
+        title: "CAPÍTULO VII – FISCALIZAÇÃO E PENALIDADES",
+        text: "Define infrações (recusa de inspeção, manutenção de focos). Penalidades: Advertência, Multa (ajustada anualmente), Interdição e execução forçada de limpeza com cobrança de custos."
+      },
+      {
+        title: "ANEXO: MINUTA DE RESOLUÇÃO E DOCUMENTOS PADRÃO",
+        text: "Estabelece modelos operacionais: 1. Auto de Infração Sanitária (checklist de irregularidades); 2. Termo de Advertência (prazo para regularização); 3. Relatório Circunstanciado (para documentar ingresso forçado)."
+      }
     ]
   },
   references: [
@@ -282,7 +317,7 @@ export const EXTRA_SECTIONS = {
     "BRASIL. Ministério da Saúde. Secretaria de Vigilância em Saúde. Diretrizes nacionais para prevenção e controle de epidemias de dengue. Brasília: Ministério da Saúde, 2009. 160 p.",
     "BRASIL. Ministério da Saúde. Boletim Epidemiológico. Brasília: Ministério da Saúde, v. 51, n. 1-52, 2020-2025.",
     "PARANÁ. Secretaria de Estado da Saúde. Informe Epidemiológico - Dengue. Curitiba: SESA-PR, 2020-2025.",
-    "BRASIL. Lei nº 8.080, de 19 de setembro de 1990. Dispõe sobre as condições para a promoção, proteção e recuperação da saúde. Diário Oficial da União, Brasília, DF, 20 set. 1990.",
+    "BRASIL. Lei nº 8.080, de 19 de setembro de 1990. Dispõe sobre a condições para a promoção, proteção e recuperação da saúde. Diário Oficial da União, Brasília, DF, 20 set. 1990.",
     "BRASIL. Lei nº 13.301, de 27 de junho de 2016. Dispõe sobre a adoção de medidas de vigilância em saúde quando verificada situação de iminente perigo à saúde pública pela presença do mosquito transmissor do vírus da dengue. Diário Oficial da União, Brasília, DF, 28 jun. 2016.",
     "TEIXEIRA, M. G. et al. Dengue: twenty-five years since reemergence in Brazil. Cadernos de Saúde Pública, Rio de Janeiro, v. 25, supl. 1, p. S7-S18, 2009.",
     "INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA (IBGE). Cidades@ - Perobal/PR. Disponível em: https://cidades.ibge.gov.br/brasil/pr/perobal/panorama."
@@ -501,7 +536,7 @@ export const DADOS: DadosCollection = {
         },
         liraa: {
             ciclos: ['1º (Jan)', '2º (Abr)', '3º (Jun)', '4º (Ago)', '5º (Out)', '6º (Dez)'],
-            iip: [0.9, 1.7, 1.3, 0.4, 0.8, 3.5, 1.7],
+            iip: [0.9, 1.7, 1.3, 0.4, 0.8, 1.7],
             classificacao: ['Alto Risco', 'Médio Risco', 'Médio Risco', 'Médio Risco', 'Médio Risco', 'Médio Risco']
         },
         impactoEconomico: {
@@ -545,9 +580,9 @@ export const DADOS: DadosCollection = {
             masculino: [1,3,5,7,9,11,10,8,3,3,1]
         },
         liraa: {
-            ciclos: ['1º (Jan)', '2º (Mar)', '3º (Mai)', '4º (Jul)'],
-            iip: [1.6, 1.3, 1.7, 0.8],
-            classificacao: ['Médio Risco', 'Médio Risco', 'Médio Risco', 'Satisfatório']
+            ciclos: ['1º (Jan)', '2º (Mar)', '3º (Mai)', '4º (Jul)', '5º (Set)', '6º (Out)'],
+            iip: [1.6, 1.3, 1.7, 0.8, 0.0, 1.7],
+            classificacao: ['Médio Risco', 'Médio Risco', 'Médio Risco', 'Satisfatório', 'Satisfatório', 'Médio Risco']
         },
         impactoEconomico: {
             total: 202570.10,
